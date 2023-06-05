@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// Jackson Databind
+  	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.1'
+    // java.time 系オブジェクトとの変換に必要
+  	// Add-on module to support JSR-310 (Java 8 Date & Time API) data types.
+  	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1'
+  	// JUnitのテスト用
+  	//implementation 'org.junit.jupiter.api';
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
