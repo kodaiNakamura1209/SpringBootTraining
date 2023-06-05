@@ -14,7 +14,7 @@ public class DemoDto {
         this.userId = userId;
     }
 
-	String userId;
+	private String userId;
 
-    String userName;
+    private String userName;
 }
