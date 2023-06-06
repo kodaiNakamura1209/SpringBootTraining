@@ -14,10 +14,10 @@ import lombok.ToString;
 @NoArgsConstructor
 public class LoginDto {
 
-	@NotBlank(message = "{NotBlank.LoginDto.userId}")
+	@NotBlank(message = "ユーザーIDを入力してください")
 	private String userId;
 	
-	@NotBlank(message = "{NotBlank.LoginDto.userPassword}")
+	@NotBlank(message = "パスワードを入力してください")
 	private String userPassword;
 	
 	private String userName;

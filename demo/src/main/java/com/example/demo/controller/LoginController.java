@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.dto.LoginDto;
-import com.example.demo.exception.ValidatedException;
 import com.example.demo.service.LoginService;
 
 @Controller
@@ -23,7 +22,7 @@ public class LoginController {
     public String loginTop(Model model) {
     	
     	// ログイン情報格納用のオブジェクトを設定
-    	model.addAttribute("loginInfo", new LoginDto());
+    	model.addAttribute("loginDto", new LoginDto());
     	
     	return "login";
     }
@@ -35,7 +34,9 @@ public class LoginController {
     	if (bindingResult.hasErrors()) {
     		System.out.println("!!!! パターンエラー発生 !!!!");
     		System.out.println(bindingResult.getFieldError().getDefaultMessage());
-    		throw new ValidatedException("E_001", bindingResult.getFieldError().getDefaultMessage());
+    		
+    		model.addAttribute("loginDto", loginDto);
+    		return "login";
     	}
     	
     	// ログインユーザーの情報を取得
@@ -44,7 +45,7 @@ public class LoginController {
     	// ユーザーIDが空の場合はログイン失敗のため、前のページに戻る
     	if("".equals(loginDto.getUserId())) {
         	// ログイン情報格納用のオブジェクトを設定
-        	model.addAttribute("loginInfo", new LoginDto());
+        	model.addAttribute("loginDto", new LoginDto());
     		return "login";
     	}
     	
