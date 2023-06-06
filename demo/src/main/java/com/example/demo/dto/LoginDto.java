@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,10 +13,12 @@ import lombok.ToString;
 @NoArgsConstructor
 public class LoginDto {
 
-	@NotBlank(message = "ユーザーIDを入力してください")
+	@javax.validation.constraints.NotBlank(message = "ユーザーIDを入力してください")
+	@javax.validation.constraints.Size(min = 8,max = 8,message = "ユーザーIDは8文字で入力してください")
 	private String userId;
 	
-	@NotBlank(message = "パスワードを入力してください")
+	@javax.validation.constraints.NotBlank(message = "パスワードを入力してください")
+	@javax.validation.constraints.Size(min = 8,max = 18,message = "パスワードは8～18文字で入力してください")
 	private String userPassword;
 	
 	private String userName;
