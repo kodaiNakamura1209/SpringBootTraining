@@ -16,6 +16,8 @@
 					<th>ユーザーID</th>
 					<td>
 						<input type="text" th:field = "*{userId}">
+					</td>
+					<td>
 						<span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" style="color: rgb(255, 0, 0); font-weight: bold;" />
 					</td>
 				</tr>
@@ -23,6 +25,8 @@
 					<th>パスワード</th>
 					<td>
 						<input type="text" th:field = "*{userPassword}">
+					</td>
+					<td>
 						<span th:if="${#fields.hasErrors('userPassword')}" th:errors="*{userPassword}" style="color: rgb(255, 0, 0); font-weight: bold;" />
 					</td>
 				</tr>
