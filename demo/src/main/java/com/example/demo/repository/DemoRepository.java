@@ -6,27 +6,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.Entity.DemoEntity;
+import com.example.demo.dataSource.DbAccessDataSource;
 
 @Repository
 public class DemoRepository {
+	
+	@Autowired
+	DbAccessDataSource dataSource;
+	
     // dto dao　を作ってみる
     public DemoEntity selectUserInfo(DemoEntity entity){
     	
-    	// URLを定義 → propertyファイルに移動
-    	String JDBC_URL2="jdbc:h2:mem:testdb";
-
     	try
     	{
     		// DBコネクションを取得
-    		Connection conn = DriverManager.getConnection(JDBC_URL2, "sa", "");
+    		Connection conn = DriverManager.getConnection(dataSource.getUrl(), dataSource.getUsername(), dataSource.getPassword());
     		
     		// SQLの生成
-    		StringBuffer sql = new StringBuffer("SELECT USER_ID, USER_PASSWORD, USER_NAME FROM USER_INFO WHERE USER_ID = '");
+    		StringBuffer sql = new StringBuffer("SELECT \"USER_ID\", \"USER_PASSWORD\", \"USER_NAME\" FROM public.\"USER_INFO\" WHERE \"USER_ID\" = '");
     		sql.append(entity.getUserId());
-    		sql.append("' AND USER_PASSWORD = '");
+    		sql.append("' AND \"USER_PASSWORD\" = '");
     		sql.append(entity.getUserPassword());
     		sql.append("';");
     		PreparedStatement pStmt = conn.prepareStatement(sql.toString());
