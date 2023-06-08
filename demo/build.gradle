@@ -4,8 +4,10 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
+jar.baseName = 'test'  /*jar名*/
+version = '1.0.0'  /*jarバージョン*/
+
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 configurations {
@@ -39,6 +41,9 @@ dependencies {
   	// postgreSQL用
   	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
   	runtimeOnly 'org.postgresql:postgresql'
+  	
+  	// ファイル名
+  	compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 tasks.named('test') {
