@@ -7,5 +7,12 @@
 <body>
 <h1 align="center">マイページ</h1>
 <h2 align="center"><p th:text="'ようこそ！' + ${mypageInfo.userName} +'さん' + '(ユーザーID: ' + ${mypageInfo.userId} + ')'"/></h2>
+<table style="margin:auto">
+	<tr>
+		<td>
+			<a th:href="@{/addressSearch}" >住所検索機能</a>
+		</td>
+	</tr>
+</table>
 </body>
 </html>
