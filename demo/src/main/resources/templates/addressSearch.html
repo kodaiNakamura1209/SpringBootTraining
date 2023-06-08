@@ -20,7 +20,7 @@
 			<input type="submit" value="住所検索"  style="margin-top: 1%;">
 		</form>
 	</div>
-	<div align = "center" style="margin-top: 2%;">
+	<div th:if="${addressSearchDto.result != null}" align = "center" style="margin-top: 2%;">
 		<table border="1">
 			<div th:each="address, stat : ${addressSearchDto.result.results}">
 				<tr><th colspan="2" th:text="${stat.count}"></th></tr>
