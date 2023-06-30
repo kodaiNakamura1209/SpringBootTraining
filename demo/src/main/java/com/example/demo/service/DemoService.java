@@ -24,7 +24,7 @@ public class DemoService {
     }
 
     public DemoDto getData(DemoDto dto){
-        DemoEntity entity = repository.selectUserName(convertDtoToEntity(dto));
+        DemoEntity entity = repository.selectUserInfo(convertDtoToEntity(dto));
         dto.setUserName(entity.getUserName());
         return dto;
     }

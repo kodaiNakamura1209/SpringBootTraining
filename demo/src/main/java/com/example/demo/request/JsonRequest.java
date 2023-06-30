@@ -2,7 +2,6 @@ package com.example.demo.request;
 
 import java.io.Serializable;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +14,6 @@ public class JsonRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @NotBlank(message = "{NotBlank.jsonRequest.userId}")
+    @javax.validation.constraints.NotBlank(message = "{NotBlank.jsonRequest.userId}")
     private String userId;
 }

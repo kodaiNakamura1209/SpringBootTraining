@@ -15,7 +15,7 @@ import com.example.demo.service.DemoService;
 
 
 //Controllerクラス
-// @RestController・・・リクエストを受け、JSONやXML返す
+// @RestController・・・リクエストを受け、JSONやXML返す = 主にWebAPIのControllerに使用
 //　　　　　　　　　　　　　DI可能(@Autowired可能)なコンポーネントとして扱う(DIコンテナに登録)
 @RestController
 public class DemoController {

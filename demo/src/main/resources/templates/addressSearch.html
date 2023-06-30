@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>住所検索</title>
+</head>
+<body>
+	<h1 align="center">Springboot　Training</h1>
+	<h2 align="center">住所検索画面</h2>
+	<div align="center">
+		<form th:action="@{/addressSearch/SearchDo}" th:object="${addressSearchDto}" method="post">
+			<table>
+				<tr>
+					<th>郵便番号</th>
+					<td>
+						<input type="text" th:field = "*{inputZipCode}">
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="住所検索"  style="margin-top: 1%;">
+		</form>
+	</div>
+	<div th:if="${addressSearchDto.result != null}" align = "center" style="margin-top: 2%;">
+		<table border="1">
+			<div th:each="address, stat : ${addressSearchDto.result.results}">
+				<tr><th colspan="2" th:text="${stat.count}"></th></tr>
+				<tr>
+					<th>郵便番号</th>
+					<td  th:text="${address.zipcode}"/>
+				</tr>
+				<tr>
+					<th>都道府県名</th>
+					<td th:text="${address.address1}"/>
+				</tr>
+				<tr>
+					<th>市区町村名</th>
+					<td th:text="${address.address2}"/>
+				</tr>
+				<tr>
+					<th>地域名</th>
+					<td th:text="${address.address3}"/>
+				</tr>
+			</div>
+		</table>
+	</div>
+</body>
+</html>
